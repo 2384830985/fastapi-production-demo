@@ -1,0 +1,50 @@
+# EditorConfig：统一所有编辑器的缩进/换行/编码
+# VS Code / PyCharm / Sublime / Vim 等都支持
+
+# 顶级配置，表示这是根目录（向上不再找 .editorconfig）
+root = true
+
+# ── 通用默认 ─────────────────────────────────────────────
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+# ── Python ──────────────────────────────────────────────
+[*.py]
+indent_size = 4
+# PEP 8 推荐 4 空格缩进，不用 tab
+max_line_length = 120
+
+# ── YAML / YML ──────────────────────────────────────────
+[*.{yml,yaml}]
+indent_size = 2
+
+# ── JSON ────────────────────────────────────────────────
+[*.json]
+indent_size = 2
+
+# ── Markdown ────────────────────────────────────────────
+[*.md]
+# markdown 行尾两空格表示换行，不裁剪
+trim_trailing_whitespace = false
+indent_size = 2
+
+# ── Makefile（必须用 tab）──────────────────────────────
+[Makefile]
+indent_style = tab
+
+# ── Shell ───────────────────────────────────────────────
+[*.sh]
+indent_size = 2
+
+# ── Dockerfile ──────────────────────────────────────────
+[Dockerfile]
+indent_size = 2
+
+# ── INI / 配置文件 ─────────────────────────────────────
+[*.{ini,cfg,toml}]
+indent_size = 2

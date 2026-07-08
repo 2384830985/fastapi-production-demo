@@ -1,0 +1,58 @@
+{
+  "version": "0.0.1",
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(python3:*)",
+      "Bash(pip:*)",
+      "Bash(source:*)",
+      "Bash(alembic:*)",
+      "Bash(mysql:*)",
+      "Bash(docker:*)",
+      "Bash(docker compose:*)",
+      "Bash(git:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(mkdir:*)",
+      "Bash(chmod:*)",
+      "Bash(rm:*)",
+      "Bash(mv:*)",
+      "Bash(cp:*)",
+      "Bash(touch:*)",
+      "Bash(echo:*)",
+      "Bash(which:*)",
+      "Bash(curl:*)",
+      "Bash(lsof:*)",
+      "Bash(kill:*)",
+      "Bash(sleep:*)"
+    ]
+  },
+  "hooks": {
+    "PostEdit": [
+      {
+        "matcher": "**/*.py",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "scripts/check.sh",
+            "timeout": 60
+          }
+        ]
+      }
+    ],
+    "PreCommit": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "scripts/check.sh",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}

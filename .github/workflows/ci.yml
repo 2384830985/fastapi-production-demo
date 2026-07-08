@@ -1,0 +1,188 @@
+# CI/CD 流水线
+#
+# 触发条件：
+# - push 到 main/develop 分支
+# - 提交 PR 到 main
+#
+# 流程：
+# 1. lint：代码风格检查（flake8）
+# 2. test：跑测试（需要 MySQL 服务）
+# 3. build：构建 Docker 镜像
+# 4. push：推到 Docker Hub（仅 main 分支）
+
+name: CI/CD
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+# 同分支新 push 取消旧 run，省 CI 资源
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ── Job 1：代码检查 ──────────────────────────────────
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install linter
+        run: pip install flake8
+
+      - name: Run flake8
+        # E: 错误，W: 警告，F: pyflakes
+        # --max-line-length=120 行宽
+        # --extend-ignore=E501 忽略行过长（项目用详细注释）
+        run: |
+          flake8 app/ tests/ main.py \
+            --max-line-length=120 \
+            --extend-ignore=E501,W503 \
+            --exclude=env,alembic
+
+  # ── Job 2：测试 ──────────────────────────────────────
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    needs: lint  # lint 通过后才跑测试
+
+    # 启动 MySQL 服务容器
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: 123456
+          MYSQL_DATABASE: testdb
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost -u root -p123456"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    env:
+      DB_HOST: 127.0.0.1
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: 123456
+      DB_NAME: testdb
+      LOG_LEVEL: ERROR  # 测试时只看错误
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install httpx  # 测试客户端依赖
+
+      - name: Wait for MySQL
+        run: |
+          echo "等待 MySQL 启动..."
+          for i in {1..30}; do
+            if mysqladmin ping -h 127.0.0.1 -u root -p123456 --silent; then
+              echo "MySQL 已就绪"
+              break
+            fi
+            echo "等待中... ($i/30)"
+            sleep 2
+          done
+
+      - name: Run migrations
+        run: alembic upgrade head
+
+      - name: Run tests
+        run: python tests/test_api.py
+
+  # ── Job 3：构建并推送 Docker 镜像 ────────────────────
+  build-and-push:
+    name: Build & Push Docker Image
+    runs-on: ubuntu-latest
+    needs: test  # 测试通过后才构建
+    # 仅 main 分支才推送镜像
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ secrets.DOCKER_USERNAME }}/fastapi-user-demo
+          tags: |
+            type=raw,value=latest
+            type=sha,format=short
+            type=ref,event=branch
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          # 利用 GitHub Actions 缓存
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # ── Job 4：部署到服务器（可选，需配置 SSH） ─────────
+  deploy:
+    name: Deploy to Server
+    runs-on: ubuntu-latest
+    needs: build-and-push
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    # 仅配置了 DEPLOY_HOST 时才执行
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup SSH
+        if: env.DEPLOY_HOST != ''
+        uses: webfactory/ssh-agent@v0.9.1
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Deploy
+        if: env.DEPLOY_HOST != ''
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+        run: |
+          ssh -o StrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_HOST << 'EOF'
+            cd /opt/fastapi-user-demo
+            git pull
+            docker compose pull
+            docker compose up -d --remove-orphans
+            docker compose exec -T app alembic upgrade head
+            docker image prune -f
+            echo "✅ 部署完成"
+          EOF
