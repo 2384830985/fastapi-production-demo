@@ -1,4 +1,6 @@
 # 02 - FastAPI 框架入门与原理
+> 📦 **GitHub 仓库**：[https://github.com/2384830985/fastapi-production-demo](https://github.com/2384830985/fastapi-production-demo)
+
 
 > 系列文章第 2 篇。本篇讲清楚 FastAPI 是什么、为什么快、依赖注入怎么工作、路由怎么匹配、生命周期怎么管理。
 

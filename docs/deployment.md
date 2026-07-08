@@ -1,4 +1,6 @@
 # 部署文档
+> 📦 **GitHub 仓库**：[https://github.com/2384830985/fastapi-production-demo](https://github.com/2384830985/fastapi-production-demo)
+
 
 ## 部署方式
 

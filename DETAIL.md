@@ -1,4 +1,6 @@
 # FastAPI 用户管理项目 - 精细代码讲解
+> 📦 **GitHub 仓库**：[https://github.com/2384830985/fastapi-production-demo](https://github.com/2384830985/fastapi-production-demo)
+
 
 > 本文档从入口文件开始，逐模块、逐函数、逐关键行讲解项目实现。
 > 适合 FastAPI / SQLAlchemy / Pydantic v2 初学者对照源码学习。

@@ -1,4 +1,6 @@
 # 07 - 密码安全与事务边界
+> 📦 **GitHub 仓库**：[https://github.com/2384830985/fastapi-production-demo](https://github.com/2384830985/fastapi-production-demo)
+
 
 > 系列文章第 7 篇。本篇讲清楚密码哈希原理、bcrypt 工作因子、JWT 鉴权、ACID 事务、事务边界设计。
 

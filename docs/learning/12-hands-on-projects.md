@@ -1,4 +1,6 @@
 # 12 - 动手实战（5 个扩展任务）
+> 📦 **GitHub 仓库**：[https://github.com/2384830985/fastapi-production-demo](https://github.com/2384830985/fastapi-production-demo)
+
 
 > 系列文章第 12 篇（附录 B）。本篇给你 5 个由易到难的扩展任务，每个任务带详细实现指南，带你真正动手改项目。
 

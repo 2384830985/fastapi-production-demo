@@ -1,4 +1,6 @@
 # 贡献指南
+> 📦 **GitHub 仓库**：[https://github.com/2384830985/fastapi-production-demo](https://github.com/2384830985/fastapi-production-demo)
+
 
 感谢你对本项目的关注！本文档指导你如何参与贡献。
 

@@ -1,4 +1,6 @@
 # 16 - 上线审计与修复实战
+> 📦 **GitHub 仓库**：[https://github.com/2384830985/fastapi-production-demo](https://github.com/2384830985/fastapi-production-demo)
+
 
 > 系列文章第 16 篇（附录 F）。本篇记录一次真实的上线前审计：发现 6 个问题、修复 4 个 P0、验证通过。教你如何判断项目能否上线，以及修复的真实过程。
 

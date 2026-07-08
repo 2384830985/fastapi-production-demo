@@ -1,4 +1,6 @@
 # 项目文档
+> 📦 **GitHub 仓库**：[https://github.com/2384830985/fastapi-production-demo](https://github.com/2384830985/fastapi-production-demo)
+
 
 本目录存放项目设计、部署、运维相关文档。
 

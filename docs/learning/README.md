@@ -1,4 +1,6 @@
 # 学习路线总索引
+> 📦 **GitHub 仓库**：[https://github.com/2384830985/fastapi-production-demo](https://github.com/2384830985/fastapi-production-demo)
+
 
 > 本系列文章带你从零掌握这个 FastAPI 用户管理项目涉及的所有技能。
 

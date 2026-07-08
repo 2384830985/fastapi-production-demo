@@ -1,4 +1,6 @@
 # 05 - Alembic 数据库迁移原理与实践
+> 📦 **GitHub 仓库**：[https://github.com/2384830985/fastapi-production-demo](https://github.com/2384830985/fastapi-production-demo)
+
 
 > 系列文章第 5 篇。本篇讲清楚 Alembic 的工作原理、autogenerate、版本图、生产迁移策略。
 

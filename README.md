@@ -1,4 +1,6 @@
 # FastAPI 用户管理示例（生产级）
+> 📦 **GitHub 仓库**：[https://github.com/2384830985/fastapi-production-demo](https://github.com/2384830985/fastapi-production-demo)
+
 
 按 **四层架构 + 完整基础设施** 组织的 FastAPI 项目，可作为生产项目脚手架。
 

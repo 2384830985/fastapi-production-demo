@@ -1,4 +1,6 @@
 # 04 - SQLAlchemy 2.0 ORM 完全指南
+> 📦 **GitHub 仓库**：[https://github.com/2384830985/fastapi-production-demo](https://github.com/2384830985/fastapi-production-demo)
+
 
 > 系列文章第 4 篇。本篇讲清楚 SQLAlchemy 2.0 的新写法、Session 机制、查询、flush vs commit、连接池。
 

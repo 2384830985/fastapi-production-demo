@@ -1,4 +1,6 @@
 # 13 - 面试题集（30 题）
+> 📦 **GitHub 仓库**：[https://github.com/2384830985/fastapi-production-demo](https://github.com/2384830985/fastapi-production-demo)
+
 
 > 系列文章第 13 篇（附录 C）。本篇收录 30 道覆盖项目所有知识点的面试题，按主题分组，每题附详细答案。
 

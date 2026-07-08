@@ -1,4 +1,6 @@
 # 06 - 四层架构设计原理
+> 📦 **GitHub 仓库**：[https://github.com/2384830985/fastapi-production-demo](https://github.com/2384830985/fastapi-production-demo)
+
 
 > 系列文章第 6 篇。本篇讲清楚为什么要分层、依赖方向、Repository 模式、DTO 转换、本项目的架构决策。
 

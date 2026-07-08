@@ -1,4 +1,6 @@
 # CLAUDE.md
+> 📦 **GitHub 仓库**：[https://github.com/2384830985/fastapi-production-demo](https://github.com/2384830985/fastapi-production-demo)
+
 
 > 本文件用于指导 Claude Code 在本项目中工作。每次会话开始时请阅读本文。
 

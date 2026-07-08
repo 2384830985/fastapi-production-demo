@@ -1,4 +1,6 @@
 # 09 - Docker 容器化与 CI/CD
+> 📦 **GitHub 仓库**：[https://github.com/2384830985/fastapi-production-demo](https://github.com/2384830985/fastapi-production-demo)
+
 
 > 系列文章第 9 篇。本篇讲清楚 Docker 多阶段构建、Compose 编排、GitHub Actions 流水线、镜像优化。
 

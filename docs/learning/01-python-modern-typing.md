@@ -1,4 +1,6 @@
 # 01 - Python 现代特性与类型注解
+> 📦 **GitHub 仓库**：[https://github.com/2384830985/fastapi-production-demo](https://github.com/2384830985/fastapi-production-demo)
+
 
 > 系列文章第 1 篇。本篇讲清楚 Python 3.9+ 项目里类型注解的方方面面，以及项目中那些"看不太懂"的语法到底怎么回事。
 

@@ -1,4 +1,6 @@
 # MySQL 初始化脚本目录
+> 📦 **GitHub 仓库**：[https://github.com/2384830985/fastapi-production-demo](https://github.com/2384830985/fastapi-production-demo)
+
 
 放在这里的 `.sql` / `.sh` 文件会在 MySQL 容器首次启动时自动执行（按文件名字母序）。
 

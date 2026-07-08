@@ -1,4 +1,6 @@
 # 10 - Claude Code Hook 与 AST 静态分析
+> 📦 **GitHub 仓库**：[https://github.com/2384830985/fastapi-production-demo](https://github.com/2384830985/fastapi-production-demo)
+
 
 > 系列文章第 10 篇（终篇）。本篇讲清楚 Claude Code Hook 机制、Python `ast` 模块、AST 静态分析实现、自定义校验规则。
 

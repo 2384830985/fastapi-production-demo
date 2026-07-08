@@ -1,4 +1,6 @@
 # 数据库设计
+> 📦 **GitHub 仓库**：[https://github.com/2384830985/fastapi-production-demo](https://github.com/2384830985/fastapi-production-demo)
+
 
 ## 表结构
 

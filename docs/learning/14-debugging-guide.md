@@ -1,4 +1,6 @@
 # 14 - 常见错误与调试技巧
+> 📦 **GitHub 仓库**：[https://github.com/2384830985/fastapi-production-demo](https://github.com/2384830985/fastapi-production-demo)
+
 
 > 系列文章第 14 篇（附录 D）。本篇收录 25 个项目实战中常见的错误及排查方法，按主题分组，每个错误附原因和解决方案。
 

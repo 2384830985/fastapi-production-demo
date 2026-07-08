@@ -1,4 +1,6 @@
 # 03 - Pydantic v2 数据校验深入
+> 📦 **GitHub 仓库**：[https://github.com/2384830985/fastapi-production-demo](https://github.com/2384830985/fastapi-production-demo)
+
 
 > 系列文章第 3 篇。本篇讲清楚 Pydantic v2 的核心机制、与 v1 的区别、Field 约束、自定义校验器、泛型模型、`model_config` 配置。
 

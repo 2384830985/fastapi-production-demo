@@ -1,4 +1,6 @@
 # 15 - 项目工程化指南
+> 📦 **GitHub 仓库**：[https://github.com/2384830985/fastapi-production-demo](https://github.com/2384830985/fastapi-production-demo)
+
 
 > 系列文章第 15 篇（附录 E）。本篇讲清楚项目从"能跑"到"生产级"补齐的工程基础设施，每个工具为什么需要、怎么配置、怎么用。
 

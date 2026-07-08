@@ -1,4 +1,6 @@
 # 08 - 异常处理与日志系统
+> 📦 **GitHub 仓库**：[https://github.com/2384830985/fastapi-production-demo](https://github.com/2384830985/fastapi-production-demo)
+
 
 > 系列文章第 8 篇。本篇讲清楚业务异常设计、全局异常处理器、logging 模块、结构化日志、生产日志策略。
 

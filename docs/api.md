@@ -1,4 +1,6 @@
 # API 接口文档
+> 📦 **GitHub 仓库**：[https://github.com/2384830985/fastapi-production-demo](https://github.com/2384830985/fastapi-production-demo)
+
 
 Base URL: `http://127.0.0.1:8000`
 

@@ -1,4 +1,6 @@
 # 11 - 项目代码导览（按文件清单学）
+> 📦 **GitHub 仓库**：[https://github.com/2384830985/fastapi-production-demo](https://github.com/2384830985/fastapi-production-demo)
+
 
 > 系列文章第 11 篇（附录 A）。本篇按文件清单带你逐文件通读项目，每个文件做什么、关键代码、对应哪篇正文。
 
